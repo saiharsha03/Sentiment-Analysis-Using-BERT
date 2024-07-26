@@ -24,4 +24,13 @@ input_text = st.text_input("Enter your sentence here")
 
 if input_text:
     result = clf.predict(get_sentence_embeddings(input_text))
-    st.write(f"Prediction: {result}")
+    if result == 1:
+        st.write(
+            "<div style='text-align: center; background-color: green; font-size: 24px; color: white;'>Positive Review 😀</div>",
+            unsafe_allow_html=True
+        )
+    else:
+        st.markdown(
+            "<div style='text-align: center; background-color: red; font-size: 24px; color: white;'>Negative Review😔</div>",
+            unsafe_allow_html=True
+        )
